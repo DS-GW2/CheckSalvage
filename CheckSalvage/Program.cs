@@ -26,8 +26,13 @@ namespace CheckSalvage
             public double InstantProfit;
         }
 
+        const int MAXBUY = 10;
+
         static TradeWorker trader = new TradeWorker();
         static double BLSalvageCost = 0;
+        static bool auto = false;
+        static bool freeBLSalvage = false;
+        static int maxBuy = MAXBUY;
 
         static void ListViableRuneSigilItems(string suffix, Item upgrade, int ectoPrice, List<Item> itemList, List<resultRecord> result, TypeEnum type, bool nullUpgrade = false)
         {
@@ -159,13 +164,27 @@ namespace CheckSalvage
 
         static void Main(string[] args)
         {
+            if (args.Length > 0)
+            {
+                maxBuy = MAXBUY;
+                if (int.TryParse(args[0], out maxBuy))
+                {
+                    Console.WriteLine("Automatic mode activated!...");
+                    auto = true;
+                }
+                else
+                {
+                    freeBLSalvage = true;
+                }
+            }
+
             try
             {
                 Task<List<Item>> itemList = trader.get_items(19721);
                 int ectoPrice = ((Item)itemList.Result[0]).MinSaleUnitPrice;
                 Console.WriteLine("Ecto price: {0}", ectoPrice);
 
-                BLSalvageCost = trader.BlackLionKitSalvageCost;
+                BLSalvageCost = freeBLSalvage ? 0.0 : trader.BlackLionKitSalvageCost;
                 //BLSalvageCost = 0.0;
                 Console.WriteLine("BL Salvage Cost: {0}", BLSalvageCost);
 
@@ -180,8 +199,8 @@ namespace CheckSalvage
 
                 foreach (resultRecord rec in result)
                 {
-                    if (rec.InstantProfit > 0.0)
-                    //if (rec.InstantProfit > BLSalvageCost)
+                    //if (rec.InstantProfit > 0.0)
+                    if (rec.InstantProfit > BLSalvageCost)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
 
@@ -200,6 +219,19 @@ namespace CheckSalvage
                         rec.OfferPrice, rec.SalePrice, rec.upgradeName, ((rec.UpgradeMinSaleUnitPrice - rec.UpgradeAvgSaleUnitPrice) > 10000 ? "*" : ""));
 
                     Console.ResetColor();
+                }
+
+                if (auto)
+                {
+                    Console.WriteLine("Automatic buying of the top {0} most profitable of the items...", maxBuy);
+                    result.Reverse();
+                    int i = 0;
+                    foreach (resultRecord rec in result)
+                    {
+                        i++;
+                        trader.Buy(rec.Id, 1, rec.OfferPrice).Wait();
+                        if (i >= maxBuy) break;
+                    }
                 }
             }
             catch (Exception e)
