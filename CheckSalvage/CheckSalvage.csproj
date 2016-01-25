@@ -50,11 +50,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\GW2Miner-master\GW2Miner\GW2Miner.Domain\GW2Miner.Domain.csproj">
+    <ProjectReference Include="..\gw2miner.domain\GW2Miner.Domain.csproj">
       <Project>{7c9195b4-00c4-4a24-8b87-53aae2db47a3}</Project>
       <Name>GW2Miner.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\GW2Miner-master\GW2Miner\GW2Miner.Engine\GW2Miner.Engine.csproj">
+    <ProjectReference Include="..\gw2miner.engine\GW2Miner.Engine.csproj">
       <Project>{fc8b3c57-ab04-4050-a3b7-2c98a83d57dd}</Project>
       <Name>GW2Miner.Engine</Name>
     </ProjectReference>

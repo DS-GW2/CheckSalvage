@@ -1,0 +1,6 @@
+[submodule "gw2miner.engine"]
+	path = gw2miner.engine
+	url = ssh://git@bitbucket.org/darkspirit444/gw2miner.engine
+[submodule "gw2miner.domain"]
+	path = gw2miner.domain
+	url = ssh://git@bitbucket.org/darkspirit444/gw2miner.domain

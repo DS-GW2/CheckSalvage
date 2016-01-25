@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Windows Desktop
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckSalvage", "CheckSalvage\CheckSalvage.csproj", "{301A75ED-C590-46C2-B336-B01DB05A2551}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GW2Miner.Domain", "..\GW2Miner-master\GW2Miner\GW2Miner.Domain\GW2Miner.Domain.csproj", "{7C9195B4-00C4-4A24-8B87-53AAE2DB47A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GW2Miner.Domain", "gw2miner.domain\GW2Miner.Domain.csproj", "{7C9195B4-00C4-4A24-8B87-53AAE2DB47A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GW2Miner.Engine", "..\GW2Miner-master\GW2Miner\GW2Miner.Engine\GW2Miner.Engine.csproj", "{FC8B3C57-AB04-4050-A3B7-2C98A83D57DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GW2Miner.Engine", "gw2miner.engine\GW2Miner.Engine.csproj", "{FC8B3C57-AB04-4050-A3B7-2C98A83D57DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
