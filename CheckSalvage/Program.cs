@@ -36,7 +36,7 @@ namespace CheckSalvage
 
         static void ListViableRuneSigilItems(string suffix, Item upgrade, int ectoPrice, List<Item> itemList, List<resultRecord> result, TypeEnum type, bool nullUpgrade = false)
         {
-            double chanceToGetEcto = 0.0;  // assume no ectos
+            double chanceToGetEcto = 0.0;  // assume no ectos here
             double chanceToGetUpgrade = 1.0;   // assume BLSK with 100% obtaining the upgrade per salvage
             double chanceToGetInsignia = 0.61; // assume using BLSK
 
